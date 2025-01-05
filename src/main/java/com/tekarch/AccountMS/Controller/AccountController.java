@@ -21,6 +21,11 @@ public class AccountController {
         Accounts createdAccount = accountService.addAccount(account);
         return new ResponseEntity<>(createdAccount,HttpStatus.CREATED);
     }
+    @PutMapping
+    public ResponseEntity<Accounts> updateAccount(@RequestBody Accounts account){
+        Accounts createdAccount = accountService.updateAccount(account);
+        return new ResponseEntity<>(createdAccount,HttpStatus.CREATED);
+    }
 
     @GetMapping
     public ResponseEntity<List<Accounts>>getAllAccounts(){
