@@ -13,7 +13,7 @@ phases:
       - AWS_ACCOUNT_ID=842676020507
       - echo accountID- $AWS_ACCOUNT_ID
       - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/bankrepo-accountms
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 842676020507.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
       - echo Granting execution permissions to Gradle wrapper...
       - chmod +x gradlew
       - ./gradlew clean build
@@ -49,5 +49,5 @@ phases:
 artifacts:
   files:
     - imagedefinitions.json
-    - build/libs/* .jar
+    - build/libs/*.jar
 discard-paths: yes
